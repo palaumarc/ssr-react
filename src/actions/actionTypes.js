@@ -1,0 +1,1 @@
+export const STORE_GAMES = "STORE_GAMES";

@@ -24,18 +24,25 @@ routes.forEach(route => {
         const context = {};
         const store = createStore();
 
-        const jsx = (
-            <ReduxProvider store={ store }>
-                <StaticRouter context={ context } location={ req.url }>
-                    <Layout />
-                </StaticRouter>
-            </ReduxProvider>
-        );
+         //Check if route component needs to fetch data
+         const dataFetchs = component.serverFetch ? store.dispatch(component.serverFetch(req.params)) : Promise.resolve();
 
-        const reactDom = renderToString(jsx);
-        const reduxState = store.getState();
+         //Wait until all data fetchs are finished
+         dataFetchs.then(() => {
+             const jsx = (
+                 <ReduxProvider store={ store }>
+                     <StaticRouter context={ context } location={ req.url }>
+                         <Layout />
+                     </StaticRouter>
+                 </ReduxProvider>
+             );
+ 
+             const reactDom = renderToString(jsx);
+             const reduxState = store.getState();
+ 
+             res.send(htmlTemplate(reactDom, reduxState));
+         });
 
-        res.send(htmlTemplate(reactDom, reduxState));
     });
 
 })

@@ -1,9 +1,9 @@
-import Home from "./components/Home";
+import Games from "./components/Games";
 
 export default [
     {
         path: "/",
-        component: Home,
+        component: Games,
         exact: true,
     }
 ];
