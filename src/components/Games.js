@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchGames } from "../actions";
+import { getGames } from "../reducers";
 
 class Games extends React.Component {
 
@@ -12,9 +14,9 @@ class Games extends React.Component {
                 <h2>Games</h2>
                 <ul>
                     { games.map( ( { id, names, assets } ) => (
-                        <li key={ id } >
+                        <Link key={id} to={`/games/${id}`} >
                             { names.international } - <img src={assets["cover-tiny"].uri} />
-                        </li>
+                        </Link>
                     ) ) }
                 </ul>
             </div>
@@ -24,8 +26,8 @@ class Games extends React.Component {
 
 Games.serverFetch = fetchGames; // static declaration of data requirements
 
-const mapStateToProps = ( state ) => ( {
-    games: state.games,
-} );
+const mapStateToProps = (state) => ({
+    games: getGames(state)
+});
 
 export default connect(mapStateToProps)(Games);
