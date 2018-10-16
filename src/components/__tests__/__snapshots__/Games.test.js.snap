@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game props is an array of 2 valid objects. Snapshot 1`] = `
+<div>
+  <h2>
+    Games
+  </h2>
+  <div
+    style={
+      Object {
+        "display": "grid",
+        "gridGap": "5px",
+        "gridTemplateColumns": "repeat(auto-fill, minmax(250px, 1fr))",
+      }
+    }
+  >
+    <link-mock
+      to="/games/1"
+    >
+      <GamePreview
+        logoUrl="dummyLogoUrl1"
+        name="dummyName1"
+      />
+    </link-mock>
+    <link-mock
+      to="/games/2"
+    >
+      <GamePreview
+        logoUrl="dummyLogoUrl2"
+        name="dummyName2"
+      />
+    </link-mock>
+  </div>
+</div>
+`;

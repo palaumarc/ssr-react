@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetGameById and getLastGameRun return valid values. Snapshot. 1`] = `
+<div>
+  <link-mock
+    to="/"
+  >
+    <button
+      style={
+        Object {
+          "backgroundColor": "#008CBA",
+          "border": "none",
+          "borderRadius": "4px",
+          "color": "white",
+          "cursor": "pointer",
+          "fontSize": "20px",
+          "marginBottom": "20px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Games
+    </button>
+  </link-mock>
+  <game-detail-mock
+    game={
+      Object {
+        "logoUrl": "dummyLogoUrl1",
+        "name": "dummyName1",
+      }
+    }
+    lastRun={
+      Object {
+        "duration": "PT15M7S",
+        "playerName": "dummyPlayerName",
+        "videoUrl": "dummyVideoUrl",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`GetGameById returns undefined. Snapshot. 1`] = `
+<div>
+  Game not found!
+</div>
+`;
+
+exports[`GetLastGameRun returns undefined. Snapshot. 1`] = `
+<div>
+  No runs available!
+</div>
+`;

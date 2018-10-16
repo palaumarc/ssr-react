@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All props are defined. Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "border": "1px solid grey",
+      "display": "grid",
+      "gridColumnGap": "5px",
+      "gridTemplateColumns": "min-content max-content",
+      "padding": "10px",
+      "placeItems": "center",
+      "width": "fit-content",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "grid",
+        "gridRowGap": "10px",
+        "gridTemplateRows": "80% 20%",
+        "placeItems": "center",
+      }
+    }
+  >
+    <img
+      alt="dummyName"
+      src="dummyLogoUrl"
+    />
+    dummyName
+  </div>
+  <div
+    style={
+      Object {
+        "display": "grid",
+        "gridRowGap": "10px",
+        "gridTemplateRows": "auto auto auto",
+        "placeItems": "start / center",
+      }
+    }
+  >
+    <button
+      style={
+        Object {
+          "backgroundColor": "#008CBA",
+          "border": "none",
+          "borderRadius": "4px",
+          "cursor": "pointer",
+          "fontSize": "20px",
+          "textAlign": "center",
+        }
+      }
+    >
+      <a
+        href="dummyVideoUrl"
+        style={
+          Object {
+            "color": "white",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Video
+      </a>
+    </button>
+    <span>
+      Player: 
+      dummyPlayerName
+    </span>
+    <span>
+      Time: 
+      3
+       m 
+      0
+       s
+    </span>
+  </div>
+</div>
+`;

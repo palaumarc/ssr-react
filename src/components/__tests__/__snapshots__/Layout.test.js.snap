@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All props are defined. Snapshot 1`] = `
+<div>
+  <switch-mock>
+    <route-mock
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <route-mock
+      component={[Function]}
+      exact={true}
+      path="/games/:id"
+    />
+  </switch-mock>
+</div>
+`;

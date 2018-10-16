@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All props are defined. Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "border": "1px solid grey",
+      "display": "grid",
+      "gridTemplateRows": "80% 20%",
+      "height": "250px",
+      "padding": "5px",
+      "placeItems": "center",
+    }
+  }
+>
+  <img
+    alt="dummyName"
+    src="dummyLogoUrl"
+    style={
+      Object {
+        "height": "100%",
+        "objectFit": "contain",
+        "width": "100%",
+      }
+    }
+  />
+  <span>
+    dummyName
+  </span>
+</div>
+`;
