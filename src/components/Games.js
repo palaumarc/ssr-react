@@ -19,9 +19,9 @@ class Games extends React.Component {
             <div>
                 <h2>Games</h2>
                 <ul>
-                    { games.map(({ id, names, assets }) => (
+                    { games.map(({ id, name, logoUrl }) => (
                         <Link key={id} to={`/games/${id}`} >
-                            { names.international } - <img src={assets["cover-tiny"].uri} />
+                            { name } - <img alt={name} src={logoUrl} />
                         </Link>
                     ) ) }
                 </ul>

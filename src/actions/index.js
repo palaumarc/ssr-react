@@ -7,7 +7,8 @@ import {
 } from "./actionTypes";
 
 import {
-    getGames
+    shouldLoadGames,
+    getGameById
 } from "../reducers"
 
 export const fetchGames = () => {
@@ -21,15 +22,12 @@ export const loadGameDetail = gameId => {
 
     return async (dispatch, getState) => {
 
-        let games = getGames(getState());
-
-        if (games.length === 0) {
+        if (shouldLoadGames(getState())) {
             await dispatch(fetchGames())
-            games = getGames(getState());
         }
 
-        const selectedGame = games.find(game => game.id === gameId);
-        return dispatch(fetchGameRuns(selectedGame));
+        const game = getGameById(getState(), gameId);
+        return dispatch(fetchGameRuns(game));
     }
 }
 
@@ -39,8 +37,7 @@ export const resetGameRuns = () => ({
 
 const fetchGameRuns = game => {
     return async (dispatch) => {
-        const selectedGameRunsLink = game.links.find(link => link.rel === "runs");
-        const gameRuns = await api.get(selectedGameRunsLink.uri);
+        const gameRuns = await api.get(game.links.runs);
         dispatch(storeGameRuns(gameRuns))
     }
 }

@@ -17,5 +17,11 @@ export default (state = initialState, action) => {
 };
 
 export const shouldLoad = state => state.length === 0;
-export const getGameRuns = state => state;
-export const getLastGameRun = state => state[0];
+export const getGameRuns = state => state.map(toSimplifiedStructure);
+export const getLastGameRun = state => state[0] ? toSimplifiedStructure(state[0]) : state[0];
+
+const toSimplifiedStructure = run => ({
+    videoUrl: run.videos.links[0].uri,
+    playerName: run.players[0].name || run.players[0].id,
+    duration: run.times.primary
+});

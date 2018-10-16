@@ -27,21 +27,17 @@ class GameDetailContainer extends React.Component {
             return null;
         }
 
-        const lastRunDuration = moment.duration(lastRun.times.primary);
-        const gameName = game.names.international;
-        const gameLogoUrl = game.assets["cover-tiny"].uri;
-        const lastRunVideoUrl = lastRun.videos.links[0].uri;
-        const lastRunPlayerName = lastRun.players[0].name || lastRun.players[0].id;
-
-        const gameInfo = {
-            name: gameName,
-            logoUrl: gameLogoUrl
-        };
+        const lastRunDuration = moment.duration(lastRun.duration);
 
         const lastRunInfo = {
-            videoUrl: lastRunVideoUrl,
-            playerName: lastRunPlayerName,
+            videoUrl: lastRun.videoUrl,
+            playerName: lastRun.playerName,
             duration: lastRunDuration
+        }
+
+        const gameInfo = {
+            name: game.name,
+            logoUrl: game.logoUrl
         }
 
         return (
