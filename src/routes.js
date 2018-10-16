@@ -1,4 +1,4 @@
-import GameDetailContainer from "./components/GameDetailContainer";
+import GameDetailContainerRoute from "./components/GameDetailContainerRoute";
 import GamesContainer from "./components/GamesContainer";
 
 export default [
@@ -9,7 +9,7 @@ export default [
     },
     {
         path: "/games/:id",
-        component: GameDetailContainer,
+        component: GameDetailContainerRoute,
         exact: true,
     }
 ];

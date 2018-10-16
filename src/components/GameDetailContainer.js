@@ -11,7 +11,7 @@ class GameDetailContainer extends React.Component {
 
     componentDidMount() {
         if (this.props.shouldLoadGames || this.props.shouldLoadGameRuns) {
-            this.props.loadGameDetail(this.props.match.params.id);
+            this.props.loadGameDetail(this.props.gameId);
         }
     }
 
@@ -61,7 +61,7 @@ class GameDetailContainer extends React.Component {
 GameDetailContainer.serverFetch = (params) => loadGameDetail(params.id); // static declaration of data requirements
 
 const mapStateToProps = (state, props) => ( {
-    game: getGameById(state, props.match.params.id),
+    game: getGameById(state, props.gameId),
     lastRun: getLastGameRun(state),
     shouldLoadGameRuns: shouldLoadGameRuns(state),
     shouldLoadGames: shouldLoadGames(state)
