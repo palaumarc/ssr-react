@@ -28,7 +28,7 @@ const getRunsUrl = game => {
 const toSimplifiedStructure = game => ({
     id: game.id,
     name: game.names.international,
-    logoUrl: game.assets["cover-tiny"].uri,
+    logoUrl: game.assets["cover-large"].uri,
     links: {
         runs: getRunsUrl(game)
     }

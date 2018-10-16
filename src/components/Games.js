@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchGames } from "../actions";
 import { getGames, shouldLoadGames } from "../reducers";
+import GamePreview from "./GamePreview";
 
 class Games extends React.Component {
 
@@ -18,13 +19,13 @@ class Games extends React.Component {
         return (
             <div>
                 <h2>Games</h2>
-                <ul>
+                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gridGap: '5px'}}>
                     { games.map(({ id, name, logoUrl }) => (
                         <Link key={id} to={`/games/${id}`} >
-                            { name } - <img alt={name} src={logoUrl} />
+                            <GamePreview name={name} logoUrl={logoUrl} />
                         </Link>
                     ) ) }
-                </ul>
+                </div>
             </div>
         );
     }
