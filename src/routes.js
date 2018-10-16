@@ -1,5 +1,5 @@
 import Games from "./components/Games";
-import GameDetail from "./components/GameDetail";
+import GameDetailContainer from "./components/GameDetailContainer";
 
 export default [
     {
@@ -9,7 +9,7 @@ export default [
     },
     {
         path: "/games/:id",
-        component: GameDetail,
+        component: GameDetailContainer,
         exact: true,
     }
 ];
