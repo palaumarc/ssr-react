@@ -1,10 +1,10 @@
-import Games from "./components/Games";
 import GameDetailContainer from "./components/GameDetailContainer";
+import GamesContainer from "./components/GamesContainer";
 
 export default [
     {
         path: "/",
-        component: Games,
+        component: GamesContainer,
         exact: true,
     },
     {
