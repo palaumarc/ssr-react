@@ -23,8 +23,12 @@ class GameDetailContainer extends React.Component {
 
         const { lastRun, game } = this.props;
 
-        if (!game || !lastRun) {
-            return null;
+        if (!game) {
+            return <div>Game not found!</div>;
+        }
+
+        if (!lastRun) {
+            return <div>No runs available!</div>
         }
 
         const lastRunDuration = moment.duration(lastRun.duration);
@@ -42,7 +46,7 @@ class GameDetailContainer extends React.Component {
 
         return (
             <div>
-                <Link to="/"><button>Games</button></Link>
+                <Link to="/"><button style={{marginBottom: '20px', cursor: 'pointer', color: 'white', border: 'none', textAlign: 'center', borderRadius: '4px', backgroundColor: '#008CBA', fontSize: '20px'}}>Games</button></Link>
                 <GameDetail
                     game={gameInfo}
                     lastRun={lastRunInfo}
