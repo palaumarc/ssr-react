@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.22.2",
+    "parse-jsonp": "^1.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.7",
@@ -38,6 +40,7 @@
     "eslint-plugin-react": "^7.11.1",
     "express": "^4.16.3",
     "nodemon": "^1.17.2",
+    "redux-devtools-extension": "^2.13.5",
     "webpack": "4.19.1",
     "webpack-cli": "^2.0.9",
     "webpack-dev-server": "^3.0.0"
