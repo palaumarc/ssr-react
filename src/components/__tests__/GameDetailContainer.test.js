@@ -13,7 +13,8 @@ import {
 } from "../../reducers";
 
 import {
-    loadGameDetail
+    loadGameDetail,
+    resetGameRuns
 } from "../../actions"
 
 jest.mock("../../reducers");
@@ -41,6 +42,8 @@ const gameRun = {
 
 const loadGameDetailMockAction = {type: 'loadGameDetail'};
 loadGameDetail.mockReturnValue(loadGameDetailMockAction);
+const resetGameRunsMockAction = {type: 'resetGameRuns'};
+resetGameRuns.mockReturnValue(resetGameRunsMockAction);
 
 const gameId = game.id;
 
@@ -53,6 +56,20 @@ beforeEach(() => {
     store.clearActions();
     jest.clearAllMocks();
 })
+
+test("Component is unmounted. ResetGameRuns action.", () => {
+    shouldLoadGames.mockReturnValue(false);
+    shouldLoadGameRuns.mockReturnValue(false);
+    getGameById.mockReturnValue(game);
+    getLastGameRun.mockReturnValue(gameRun);
+
+    const container = document.createElement('div');
+    ReactDOM.render(componentToTest, container);
+    ReactDOM.unmountComponentAtNode(container);
+    expect(resetGameRuns).toHaveBeenCalledTimes(1);
+    expect(resetGameRuns).toHaveBeenCalledWith();
+    expect(store.getActions()).toContainEqual(resetGameRunsMockAction);
+});
 
 test("ShouldLoadGames returns true. Component is rendered. LoadGameDetail action should be dispatched.", () => {
     shouldLoadGames.mockReturnValue(true);
