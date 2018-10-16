@@ -11,27 +11,21 @@ import {
 } from "../reducers"
 
 export const fetchGames = () => {
-    return dispatch => {
-        return api.getGames()
-            .then(games => {
-                dispatch(storeGames(games))
-            })
+    return async dispatch => {
+        const games = await api.getGames();
+        dispatch(storeGames(games));
     }
 }
 
 export const loadGameDetail = gameId => {
 
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
 
-        const games = getGames(getState());
+        let games = getGames(getState());
 
         if (games.length === 0) {
-            return dispatch(fetchGames())
-                .then(() => {
-                    const games = getGames(getState());
-                    const selectedGame = games.find(game => game.id === gameId);
-                    return dispatch(fetchGameRuns(selectedGame));
-                })
+            await dispatch(fetchGames())
+            games = getGames(getState());
         }
 
         const selectedGame = games.find(game => game.id === gameId);
@@ -44,12 +38,10 @@ export const resetGameRuns = () => ({
 })
 
 const fetchGameRuns = game => {
-    return (dispatch) => {
+    return async (dispatch) => {
         const selectedGameRunsLink = game.links.find(link => link.rel === "runs");
-        return api.get(selectedGameRunsLink.uri)
-            .then(runs => {
-                dispatch(storeGameRuns(runs))
-            })
+        const gameRuns = await api.get(selectedGameRunsLink.uri);
+        dispatch(storeGameRuns(gameRuns))
     }
 }
 

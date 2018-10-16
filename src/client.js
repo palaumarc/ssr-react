@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 
+//Enable async/await
+import "@babel/polyfill";
+
 import Layout from "./components/Layout";
 import createStore from "./store";
 

@@ -1,6 +1,9 @@
 import express from "express";
 import path from "path";
 
+//Enable async/await
+import "@babel/polyfill";
+
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
@@ -19,29 +22,29 @@ routes.forEach(route => {
 
     const { component, path } = route;
 
-    app.get(path, ( req, res ) => {
+    app.get(path, async ( req, res ) => {
 
         const context = {};
         const store = createStore();
 
-         //Check if route component needs to fetch data
-         const dataFetchs = component.serverFetch ? store.dispatch(component.serverFetch(req.params)) : Promise.resolve();
+        //Check if route component needs to fetch data
+        const dataFetchs = component.serverFetch ? store.dispatch(component.serverFetch(req.params)) : Promise.resolve();
 
-         //Wait until all data fetchs are finished
-         dataFetchs.then(() => {
-             const jsx = (
-                 <ReduxProvider store={ store }>
-                     <StaticRouter context={ context } location={ req.url }>
-                         <Layout />
-                     </StaticRouter>
-                 </ReduxProvider>
-             );
- 
-             const reactDom = renderToString(jsx);
-             const reduxState = store.getState();
- 
-             res.send(htmlTemplate(reactDom, reduxState));
-         });
+        //Wait until all data fetchs are finished
+        await dataFetchs;
+
+        const jsx = (
+            <ReduxProvider store={ store }>
+                <StaticRouter context={ context } location={ req.url }>
+                    <Layout />
+                </StaticRouter>
+            </ReduxProvider>
+        );
+
+        const reactDom = renderToString(jsx);
+        const reduxState = store.getState();
+
+        res.send(htmlTemplate(reactDom, reduxState));
 
     });
 
