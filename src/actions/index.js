@@ -1,4 +1,4 @@
-import * as api from "../api";
+import * as api from "../services/api";
 
 import {
     STORE_GAMES,
