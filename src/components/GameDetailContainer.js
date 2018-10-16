@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getGames, getGameRuns } from "../reducers";
+import { getGameById, shouldLoadGames, getLastGameRun, shouldLoadGameRuns } from "../reducers";
 import moment from "moment";
 import { loadGameDetail, resetGameRuns } from "../actions";
 import { Link } from "react-router-dom";
@@ -10,11 +10,9 @@ import GameDetail from "./GameDetail"
 class GameDetailContainer extends React.Component {
 
     componentDidMount() {
-
-        if (this.props.games.length === 0 || this.props.gameRuns.length === 0) {
+        if (this.props.shouldLoadGames || this.props.shouldLoadGameRuns) {
             this.props.loadGameDetail(this.props.match.params.id);
         }
-
     }
 
     componentWillUnmount() {
@@ -23,16 +21,15 @@ class GameDetailContainer extends React.Component {
 
     render() {
 
-        const lastRun = this.props.gameRuns[0];
-        const selectedGame = this.props.games.find(game => game.id === this.props.match.params.id);
+        const { lastRun, game } = this.props;
 
-        if (!selectedGame || !lastRun) {
+        if (!game || !lastRun) {
             return null;
         }
 
         const lastRunDuration = moment.duration(lastRun.times.primary);
-        const gameName = selectedGame.names.international;
-        const gameLogoUrl = selectedGame.assets["cover-tiny"].uri;
+        const gameName = game.names.international;
+        const gameLogoUrl = game.assets["cover-tiny"].uri;
         const lastRunVideoUrl = lastRun.videos.links[0].uri;
         const lastRunPlayerName = lastRun.players[0].name || lastRun.players[0].id;
 
@@ -63,9 +60,11 @@ class GameDetailContainer extends React.Component {
 
 GameDetailContainer.serverFetch = (params) => loadGameDetail(params.id); // static declaration of data requirements
 
-const mapStateToProps = (state) => ( {
-    games: getGames(state),
-    gameRuns: getGameRuns(state)
+const mapStateToProps = (state, props) => ( {
+    game: getGameById(state, props.match.params.id),
+    lastRun: getLastGameRun(state),
+    shouldLoadGameRuns: shouldLoadGameRuns(state),
+    shouldLoadGames: shouldLoadGames(state)
 });
 
 const mapDispatchToProps = {

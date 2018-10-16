@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchGames } from "../actions";
-import { getGames } from "../reducers";
+import { getGames, shouldLoadGames } from "../reducers";
 
 class Games extends React.Component {
 
     componentDidMount() {
-        if (this.props.games.length === 0) {
+        if (this.props.shouldLoadGames) {
             this.props.fetchGames();
         }
     }
@@ -33,7 +33,8 @@ class Games extends React.Component {
 Games.serverFetch = fetchGames; // static declaration of data requirements
 
 const mapStateToProps = (state) => ({
-    games: getGames(state)
+    games: getGames(state),
+    shouldLoadGames: shouldLoadGames(state)
 });
 
 const mapDispatchToProps = {

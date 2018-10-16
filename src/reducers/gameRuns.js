@@ -16,4 +16,6 @@ export default (state = initialState, action) => {
     }
 };
 
-export const getGameRuns = state => state
+export const shouldLoad = state => state.length === 0;
+export const getGameRuns = state => state;
+export const getLastGameRun = state => state[0];
