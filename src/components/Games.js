@@ -6,6 +6,12 @@ import { getGames } from "../reducers";
 
 class Games extends React.Component {
 
+    componentDidMount() {
+        if (this.props.games.length === 0) {
+            this.props.fetchGames();
+        }
+    }
+
     render( ) {
         const { games } = this.props;
 
@@ -13,7 +19,7 @@ class Games extends React.Component {
             <div>
                 <h2>Games</h2>
                 <ul>
-                    { games.map( ( { id, names, assets } ) => (
+                    { games.map(({ id, names, assets }) => (
                         <Link key={id} to={`/games/${id}`} >
                             { names.international } - <img src={assets["cover-tiny"].uri} />
                         </Link>
@@ -30,4 +36,8 @@ const mapStateToProps = (state) => ({
     games: getGames(state)
 });
 
-export default connect(mapStateToProps)(Games);
+const mapDispatchToProps = {
+    fetchGames
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Games);
