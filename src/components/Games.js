@@ -3,10 +3,16 @@ import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import GamePreview from "./GamePreview";
 
+const gameContainerDivStyles = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+    gridGap: '5px'
+}
+
 const Games = ({ games }) => (
     <div>
         <h2>Games</h2>
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gridGap: '5px'}}>
+        <div style={gameContainerDivStyles}>
             { games.map(({ id, name, logoUrl }) => (
                 <Link key={id} to={`/games/${id}`} >
                     <GamePreview name={name} logoUrl={logoUrl} />

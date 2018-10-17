@@ -8,6 +8,17 @@ import { Link } from "react-router-dom";
 
 import GameDetail from "./GameDetail"
 
+const gamesButtonStyles = {
+    marginBottom: '20px',
+    cursor: 'pointer',
+    color: 'white',
+    border: 'none',
+    textAlign: 'center',
+    borderRadius: '4px',
+    backgroundColor: '#008CBA',
+    fontSize: '20px'
+}
+
 class GameDetailContainer extends React.Component {
 
     componentDidMount() {
@@ -47,7 +58,7 @@ class GameDetailContainer extends React.Component {
 
         return (
             <div>
-                <Link to="/"><button style={{marginBottom: '20px', cursor: 'pointer', color: 'white', border: 'none', textAlign: 'center', borderRadius: '4px', backgroundColor: '#008CBA', fontSize: '20px'}}>Games</button></Link>
+                <Link to="/"><button style={gamesButtonStyles}>Games</button></Link>
                 <GameDetail
                     game={gameInfo}
                     lastRun={lastRunInfo}
