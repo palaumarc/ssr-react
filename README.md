@@ -4,6 +4,8 @@ Responsive gallery that shows speed run games from https://www.speedrun.com/. On
 
 There is no error view implemented, so if there is any error the App will only log the error message in the console.
 
+As UI and UX are not the main purpose of this PoC, all styles are implemented using inline styles to simpllify and speed up the development process.
+
 ## Stack
 - Express v4
 - React v16
