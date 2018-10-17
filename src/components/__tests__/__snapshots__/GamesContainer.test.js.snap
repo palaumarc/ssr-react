@@ -5,12 +5,12 @@ exports[`GetGames returns an array with 2 valid objects. Snapshot. 1`] = `
   games={
     Array [
       Object {
-        "id": 1,
+        "id": "1",
         "logoUrl": "dummyLogoUrl1",
         "name": "dummyName1",
       },
       Object {
-        "id": 2,
+        "id": "2",
         "logoUrl": "dummyLogoUrl2",
         "name": "dummyName2",
       },

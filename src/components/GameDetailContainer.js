@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { getGameById, shouldLoadGames, getLastGameRun, shouldLoadGameRuns } from "../reducers";
 import moment from "moment";
@@ -59,6 +60,23 @@ class GameDetailContainer extends React.Component {
 }
 
 GameDetailContainer.serverFetch = (params) => loadGameDetail(params.id); // static declaration of data requirements
+
+GameDetailContainer.propTypes = {
+    gameId: PropTypes.string.isRequired,
+    shouldLoadGames: PropTypes.bool.isRequired,
+    shouldLoadGameRuns: PropTypes.bool.isRequired,
+    game: PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        logoUrl: PropTypes.string,
+        links: PropTypes.object
+      }),
+    lastRun: PropTypes.shape({
+        playerName: PropTypes.string,
+        videoUrl: PropTypes.string,
+        duration: PropTypes.string
+    }),
+  };
 
 const mapStateToProps = (state, props) => ( {
     game: getGameById(state, props.gameId),

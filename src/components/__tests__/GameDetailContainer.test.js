@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import renderer from "react-test-renderer";
 import GameDetailContainer from "../GameDetailContainer";
 import reduxThunk from 'redux-thunk';
-import { 
-    shouldLoadGameRuns, 
+import {
+    shouldLoadGameRuns,
     shouldLoadGames,
     getGameById,
     getLastGameRun
@@ -29,7 +29,7 @@ const state = {};
 const store = mockStore(state);
 
 const game = {
-    id: 1,
+    id: '1',
     name: 'dummyName1',
     logoUrl: 'dummyLogoUrl1'
 }

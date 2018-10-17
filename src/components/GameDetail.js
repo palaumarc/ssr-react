@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const GameDetail = ({ game, lastRun }) => (
     <div style={{width: 'fit-content', padding: '10px', border: '1px solid grey', display: 'grid', gridTemplateColumns: 'min-content max-content', placeItems: 'center', gridColumnGap: '5px'}} >
@@ -13,5 +14,17 @@ const GameDetail = ({ game, lastRun }) => (
         </div>
     </div>
 )
+
+GameDetail.propTypes = {
+    game: PropTypes.shape({
+        name: PropTypes.string,
+        logoUrl: PropTypes.string,
+      }).isRequired,
+    lastRun: PropTypes.shape({
+        playerName: PropTypes.string,
+        videoUrl: PropTypes.string,
+        duration: PropTypes.object
+    }).isRequired,
+  };
 
 export default GameDetail;

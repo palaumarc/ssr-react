@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import renderer from "react-test-renderer";
 import GamesContainer from "../GamesContainer";
 import reduxThunk from 'redux-thunk';
-import { 
-    shouldLoadGames, 
+import {
+    shouldLoadGames,
     getGames
 } from "../../reducers";
 
@@ -26,13 +26,13 @@ const state = {};
 const store = mockStore(state);
 
 const game1 = {
-    id: 1,
+    id: '1',
     name: 'dummyName1',
     logoUrl: 'dummyLogoUrl1'
 }
 
 const game2 = {
-    id: 2,
+    id: '2',
     name: 'dummyName2',
     logoUrl: 'dummyLogoUrl2'
 }
@@ -56,7 +56,7 @@ test("ShouldLoadGames returns true. Component is rendered. FetchGames action sho
         <Provider store={store}>
             <GamesContainer />
         </Provider>
-    
+
     ReactDOM.render(componentToTest, container);
     expect(fetchGames).toHaveBeenCalledTimes(1);
     expect(fetchGames).toHaveBeenCalledWith();
@@ -74,7 +74,7 @@ test("ShouldLoadGames returns false. Component is rendered. FetchGames action sh
         <Provider store={store}>
             <GamesContainer />
         </Provider>
-    
+
     ReactDOM.render(componentToTest, container);
     expect(fetchGames).not.toHaveBeenCalled();
     expect(store.getActions()).toHaveLength(0);
@@ -88,7 +88,7 @@ test("GetGames returns an array with 2 valid objects. Snapshot.", () => {
         <Provider store={store}>
             <GamesContainer />
         </Provider>
-    
+
     const tree = renderer.create(componentToTest).toJSON();
     expect(tree).toMatchSnapshot();
 });
@@ -101,7 +101,7 @@ test("GetGames returns an empty array. Snapshot.", () => {
         <Provider store={store}>
             <GamesContainer />
         </Provider>
-    
+
     const tree = renderer.create(componentToTest).toJSON();
     expect(tree).toMatchSnapshot();
 });

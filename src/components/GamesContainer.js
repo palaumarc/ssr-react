@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { fetchGames } from "../actions";
 import { getGames, shouldLoadGames } from "../reducers";
@@ -19,6 +20,18 @@ class GamesContainer extends React.Component {
 }
 
 GamesContainer.serverFetch = fetchGames; // static declaration of data requirements
+
+GamesContainer.propTypes = {
+    shouldLoadGames: PropTypes.bool.isRequired,
+    games: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            name: PropTypes.string,
+            logoUrl: PropTypes.string,
+            links: PropTypes.object
+        })
+    ).isRequired
+};
 
 const mapStateToProps = (state) => ({
     games: getGames(state),

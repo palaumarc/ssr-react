@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import GamePreview from "./GamePreview";
 
@@ -14,5 +15,16 @@ const Games = ({ games }) => (
         </div>
     </div>
 )
+
+Games.propTypes = {
+    games: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            name: PropTypes.string,
+            logoUrl: PropTypes.string,
+            links: PropTypes.object
+        })
+    ).isRequired
+};
 
 export default Games;
