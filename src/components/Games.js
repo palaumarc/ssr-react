@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import GamePreview from "./GamePreview";
+import { gameDetail } from "../routes/paths"
 
 const gameContainerDivStyles = {
     display: 'grid',
@@ -14,7 +15,7 @@ const Games = ({ games }) => (
         <h2>Games</h2>
         <div style={gameContainerDivStyles}>
             { games.map(({ id, name, logoUrl }) => (
-                <Link key={id} to={`/games/${id}`} >
+                <Link key={id} to={gameDetail.getLink(id)} >
                     <GamePreview name={name} logoUrl={logoUrl} />
                 </Link>
             ))}

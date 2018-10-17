@@ -5,6 +5,7 @@ import { getGameById, shouldLoadGames, getLastGameRun, shouldLoadGameRuns } from
 import moment from "moment";
 import { loadGameDetail, resetGameRuns } from "../actions";
 import { Link } from "react-router-dom";
+import { home } from "../routes/paths"
 
 import GameDetail from "./GameDetail"
 
@@ -58,7 +59,7 @@ class GameDetailContainer extends React.Component {
 
         return (
             <div>
-                <Link to="/"><button style={gamesButtonStyles}>Games</button></Link>
+                <Link to={home.getLink()}><button style={gamesButtonStyles}>Games</button></Link>
                 <GameDetail
                     game={gameInfo}
                     lastRun={lastRunInfo}
